@@ -1,7 +1,7 @@
-function add(a, b) {
+const add = function add(a, b) {
   return a + b;
-}
+};
 
-export function sum(...args) {
-  // return args.reduce(add, 0);
-}
+export const sum = function sum(init, args) {
+  return args.reduce(add, init);
+};

@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/static/";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -42,16 +42,15 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("module.exports = __webpack_require__(1);\n\n\n/*****************\n ** WEBPACK FOOTER\n ** multi main\n ** module id = 0\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///multi_main?");
+
+/***/ },
+/* 1 */
 /***/ function(module, exports) {
 
-	function add(a, b) {
-	  return a + b;
-	}
-
-	export function sum(...args) {
-	  // return args.reduce(add, 0);
-	}
-
+	eval("\"use strict\";\n\nvar add = function add(a, b) {\n  return a + b;\n};\n\nvar sum = function sum(init, args) {\n  return args.reduce(add, init);\n};\n\nmodule.exports = { sum: sum };\n\n/*****************\n ** WEBPACK FOOTER\n ** ./src/js/app.js\n ** module id = 1\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./src/js/app.js?");
 
 /***/ }
 /******/ ]);

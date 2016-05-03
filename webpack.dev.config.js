@@ -1,9 +1,26 @@
-module.exports = {
-  context: __dirname + "/src/js",
-  entry: "./app.js",
+const path = require('path');
 
-  output: {
-    filename: "app.js",
-    path: __dirname + "/dist",
+module.exports = {
+  devtool: 'eval',
+  resolve: {
+    root: __dirname + '/src/js'
   },
+  entry: [
+    './src/js/app'
+  ],
+  output: {
+    path: path.join(__dirname, 'build/js'),
+    filename: 'app.js',
+    publicPath: '/static/'
+  },
+  module: {
+    loaders: [{
+      test: /\.js$/,
+      loader: 'babel-loader',
+      include: path.join(__dirname, 'src/js'),
+      query: {
+        presets: ['es2015', 'stage-0']
+      }
+    }]
+  }
 };

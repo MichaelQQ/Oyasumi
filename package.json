@@ -4,6 +4,7 @@
   "description": "my project gallery",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint **/*.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -11,5 +12,12 @@
     "url": "git+https://github.com/MichaelQQ/Gallery.git"
   },
   "author": "MichaelQQ",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^2.9.0",
+    "eslint-config-airbnb": "^8.0.0",
+    "eslint-plugin-import": "^1.6.1",
+    "eslint-plugin-jsx-a11y": "^1.0.4",
+    "eslint-plugin-react": "^5.0.1"
+  }
 }

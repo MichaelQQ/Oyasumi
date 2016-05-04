@@ -11,7 +11,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'build/js'),
     filename: 'app.js',
-    publicPath: '/static/'
+    publicPath: '/js/',
   },
   module: {
     loaders: [{

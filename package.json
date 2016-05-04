@@ -4,13 +4,14 @@
   "description": "my project gallery",
   "main": "index.js",
   "scripts": {
-    "clean": "echo \"=> Cleaning\" && rimraf build/*",
+    "bundle": "echo \"=> Bundling\" && webpack --config webpack.prod.config.js",
 
-    "lint": "echo \"=> Linting\" && eslint **/*.js",
-    "bundle": "echo \"=> Bundling\" && webpack --config webpack.dev.config.js",
-    "build": "echo \"=> Building\" && npm run clean && npm run bundle",
+    "prebuild": "echo \"=> Cleaning\" && rimraf build/*",
+    "build": "echo \"=> Building\" && npm run test && npm run bundle",
 
-    "test": "echo \"=> Testing\" && babel-node src/test/*"
+    "pretest": "echo \"=> Linting\" && eslint ./src/**/*.js",
+    "test": "echo \"=> Testing\" && babel-node src/test/*",
+    "watch": "watch 'clear && npm run test -s' src"
   },
   "repository": {
     "type": "git",
@@ -30,8 +31,11 @@
     "eslint-plugin-import": "^1.6.1",
     "eslint-plugin-jsx-a11y": "^1.0.4",
     "eslint-plugin-react": "^5.0.1",
+    "express": "^4.13.4",
     "rimraf": "^2.5.2",
     "tape": "^4.5.1",
-    "webpack": "^1.13.0"
+    "watch": "^0.18.0",
+    "webpack": "^1.13.0",
+    "webpack-dev-middleware": "^1.6.1"
   }
 }

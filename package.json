@@ -9,7 +9,8 @@
     "build": "echo \"=> Building\" && npm run test && npm run bundle",
     "pretest": "echo \"=> Linting\" && eslint ./src/**/*.js",
     "test": "echo \"=> Testing\" && babel-node src/test/*",
-    "watch": "watch 'clear && npm run test -s' src"
+    "watch": "watch 'clear && npm run test -s' src",
+    "dev": "babel-node devServer.js"
   },
   "repository": {
     "type": "git",
@@ -31,10 +32,15 @@
     "eslint-plugin-jsx-a11y": "^1.0.4",
     "eslint-plugin-react": "^5.0.1",
     "express": "^4.13.4",
+    "react-addons-test-utils": "^15.0.2",
     "rimraf": "^2.5.2",
     "tape": "^4.5.1",
     "watch": "^0.18.0",
     "webpack": "^1.13.0",
     "webpack-dev-middleware": "^1.6.1"
+  },
+  "dependencies": {
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2"
   }
 }

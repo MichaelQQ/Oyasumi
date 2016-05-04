@@ -1,7 +1,7 @@
-const add = function add(a, b) {
-  return a + b;
-};
+import React from 'react';
 
-export const sum = function sum(init, args) {
-  return args.reduce(add, init);
+export const App = function App() {
+  return (
+    <h1>test</h1>
+  );
 };

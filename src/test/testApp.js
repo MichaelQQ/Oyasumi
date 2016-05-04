@@ -1,17 +1,22 @@
 import test from 'tape';
-import * as app from '../js/app.js';
+import deepFreeze from 'deep-freeze';
+import React from 'react';
+import { createRenderer } from 'react-addons-test-utils';
 
-const testSum = t => {
-  const sumBefore = 0;
-  const arr = [1, 2, 3, 4, 5];
-  const sumAfter = 15;
+import { App } from '../js/App.js';
 
-  // deepFreeze(stateBefore);
-  // deepFreeze(stateAfter);
-  // t.deepEqual(sumAfter, app.sum(sumBefore, arr));
+const testAppComponet = t => {
+  const renderer = createRenderer();
+  renderer.render(<App />);
+
+  const actual = renderer.getRenderOutput();
+  const expect = (<h1>test</h1>);
+
+  deepFreeze(expect);
+  deepFreeze(actual);
 
   t.plan(1);
-  t.equal(app.sum(sumBefore, arr), sumAfter);
+  t.deepEqual(actual, expect, '<App /> must equal <h1>test</h1>');
 };
 
-test('Sum of [1, 2, 3, 4, 5] must equal 15', testSum);
+test('TestAppComponet', testAppComponet);

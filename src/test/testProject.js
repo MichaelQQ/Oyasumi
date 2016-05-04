@@ -3,21 +3,19 @@ import deepFreeze from 'deep-freeze';
 import React from 'react';
 import { createRenderer } from 'react-addons-test-utils';
 
-import createApp from '../js/App';
-import createProject from '../js/Project';
+import createProject from '../js/Project.js';
 
-const App = createApp(React);
 const Project = createProject(React);
 
-const testAppComponet = t => {
+const testProjectComponet = t => {
   const renderer = createRenderer();
-  renderer.render(<App />);
+  renderer.render(<Project name="test" />);
 
   const actual = renderer.getRenderOutput();
   const expect = (
     <div>
-      <h1>Gallery</h1>
-      <Project name="proj1" />
+      <h2>test</h2>
+      <div>Content</div>
     </div>
   );
 
@@ -25,7 +23,7 @@ const testAppComponet = t => {
   deepFreeze(actual);
 
   t.plan(1);
-  t.deepEqual(actual, expect, '<App /> must equal the expect dom');
+  t.deepEqual(actual, expect, '<Project name="test" /> must equal the expect dom');
 };
 
-test('Test App Componet', testAppComponet);
+test('Test Project Componet', testProjectComponet);

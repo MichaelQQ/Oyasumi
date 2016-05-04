@@ -8,8 +8,9 @@
     "prebuild": "echo \"=> Cleaning\" && rimraf build/*",
     "build": "echo \"=> Building\" && npm run test && npm run bundle",
     "pretest": "echo \"=> Linting\" && eslint ./src/**/*.js",
-    "test": "echo \"=> Testing\" && babel-node src/test/*",
-    "watch": "watch 'clear && npm run test -s' src"
+    "test": "echo \"=> Testing\" && babel-node src/test/testMain.js | faucet",
+    "watch": "watch 'clear && npm run test -s' src",
+    "dev": "babel-node devServer.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,8 @@
     "eslint-plugin-jsx-a11y": "^1.0.4",
     "eslint-plugin-react": "^5.0.1",
     "express": "^4.13.4",
+    "faucet": "0.0.1",
+    "react-addons-test-utils": "^15.0.2",
     "rimraf": "^2.5.2",
     "tape": "^4.5.1",
     "watch": "^0.18.0",

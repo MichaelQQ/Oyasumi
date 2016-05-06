@@ -2,7 +2,49 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=1.0, minimum-scale=0.5, user-scalable=yes" />
   <title>Gallery</title>
+  <style media="screen">
+    .title {
+      text-align: center;
+    }
+    .nav {
+      font-size: 3em;
+      margin: 5px;
+      display: inline-block;
+    }
+    .nav > button {
+      font-size: 24px;
+    }
+
+    .projectBox {
+      background: #bbb;
+      display: flex;
+      flex-flow: row wrap;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-content: stretch;
+    }
+    .project {
+      background: white;
+      min-width: 300px;
+      min-height: 300px;
+      padding: 5px;
+      margin: 5px;
+      text-align: center;
+      border: 1px solid #555;
+    }
+    .project > img {
+      max-height: 250px;
+      max-width: 250px;
+    }
+
+    .likeBar {
+      font-size: 20px;
+      text-align: left;
+      margin-left: 30px;
+    }
+  </style>
 </head>
 <body>
   <h1>Gallery</h1>

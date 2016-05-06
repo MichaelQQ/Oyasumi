@@ -41,5 +41,8 @@
     "watch": "^0.18.0",
     "webpack": "^1.13.0",
     "webpack-dev-middleware": "^1.6.1"
+  },
+  "dependencies": {
+    "redux": "^3.5.2"
   }
 }

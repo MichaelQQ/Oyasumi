@@ -7,7 +7,7 @@ export default React => {
     const { name, imgsrc } = props;
 
     return (
-      <div className="project">
+      <div className="project" >
         <h2>{name}</h2>
         <img src={imgsrc} alt="project pic" />
         <div>Content</div>

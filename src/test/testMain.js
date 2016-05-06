@@ -1,2 +1,2 @@
-import './testApp';
 import './testProject';
+import './testApp';

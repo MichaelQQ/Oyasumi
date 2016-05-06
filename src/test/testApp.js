@@ -11,15 +11,19 @@ const App = createApp(React);
 const Project = createProject(React);
 
 const testAppComponet = t => {
+  const onClick = () => ('coClick');
+  const addLike = () => ('addLike');
   const renderer = createRenderer();
   const project = [{
+    addLike,
     name: 'proj1',
     imgsrc: 'null',
     content: 'null',
+    likes: 0,
   }];
 
   renderer.render(
-    <App projects={project} onClick="click" />
+    <App projects={project} onClick={onClick} />
   );
 
   const actual = renderer.getRenderOutput();
@@ -27,10 +31,10 @@ const testAppComponet = t => {
     <div>
       <h1 className="title">Gallery</h1>
       <div className="nav">
-        <button onClick="click">Add Project</button>
+        <button onClick={onClick}>Add Project</button>
       </div>
       <div className="projectBox">
-        <Project imgsrc="null" name="proj1" content="null" />
+        <Project imgsrc="null" name="proj1" content="null" likes={0} addLike={addLike} />
       </div>
     </div>
   );

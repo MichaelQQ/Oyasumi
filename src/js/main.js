@@ -50,6 +50,15 @@ const project = (state = [], action) => {
         content: action.content,
         likes: 0,
       };
+    case 'ADD_LIKE':
+      if (state.id !== action.id) {
+        return state;
+      }
+
+      return {
+        ...state,
+        likes: (state.likes + 1),
+      };
     default:
       return state;
   }
@@ -62,6 +71,8 @@ const projects = (state = testData, action) => {
         ...state,
         project(undefined, action),
       ];
+    case 'ADD_LIKE':
+      return state.map(s => project(s, action));
     default:
       return state;
   }
@@ -84,6 +95,7 @@ const render = () => {
   ReactDOM.render(
     <div>
       <App
+        store={store}
         projects={store.getState()}
         onClick={() => {
           store.dispatch(addProject());

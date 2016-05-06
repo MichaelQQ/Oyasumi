@@ -6,10 +6,11 @@ export default React => {
   const {
     array,
     func,
+    object,
   } = React.PropTypes;
 
   const app = ({ ...props }) => {
-    const { projects = [], onClick } = props;
+    const { store, projects = [], onClick } = props;
 
     return (
       <div>
@@ -25,6 +26,12 @@ export default React => {
               imgsrc={project.imgsrc}
               content={project.content}
               likes={project.likes}
+              addLike={() => (
+                store.dispatch({
+                  type: 'ADD_LIKE',
+                  id: project.id,
+                })
+              )}
             />
           )}
         </div>
@@ -33,6 +40,7 @@ export default React => {
   };
 
   app.propTypes = {
+    store: object.isRequired,
     projects: array.isRequired,
     onClick: func.isRequired,
   };

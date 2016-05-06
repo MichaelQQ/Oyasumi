@@ -2,6 +2,7 @@ export default React => {
   const {
     string,
     number,
+    func,
   } = React.PropTypes;
 
   const project = ({ ...props }) => {
@@ -24,6 +25,7 @@ export default React => {
     imgsrc: string.isRequired,
     content: string.isRequired,
     likes: number.isRequired,
+    addLike: func.isRequired,
   };
 
   return project;

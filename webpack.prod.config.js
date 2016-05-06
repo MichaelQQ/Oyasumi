@@ -7,11 +7,11 @@ module.exports = {
     root: __dirname + '/src'
   },
   entry: [
-    './src/js/app'
+    './src/js/main'
   ],
   output: {
     path: path.join(__dirname, 'build/js'),
-    filename: 'app.js',
+    filename: 'main.js',
     // publicPath: '/static/'
   },
   plugins: [

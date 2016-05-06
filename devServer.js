@@ -12,7 +12,7 @@ app.use(require('webpack-dev-middleware')(compiler, {
 }));
 
 app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'src', 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(process.env.port || 3000, function (err) {

@@ -6,11 +6,11 @@ module.exports = {
     root: __dirname + '/src/js'
   },
   entry: [
-    './src/js/app'
+    './src/js/main'
   ],
   output: {
     path: path.join(__dirname, 'build/js'),
-    filename: 'app.js',
+    filename: 'main.js',
     publicPath: '/js/',
   },
   module: {
@@ -19,7 +19,7 @@ module.exports = {
       loader: 'babel-loader',
       include: path.join(__dirname, 'src/js'),
       query: {
-        presets: ['es2015', 'stage-0']
+        presets: ['es2015', 'stage-0', 'react']
       }
     }]
   }

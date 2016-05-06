@@ -10,19 +10,20 @@ const Project = createProject(React);
 
 const testProjectComponet = t => {
   const renderer = createRenderer();
-  renderer.render(<Project
-    name="test" imgsrc="http://cdn.theatlantic.com/assets/media/img/photo/2015/11/images-from-the-2016-sony-world-pho/s01_130921474920553591/main_900.jpg?1448476701"
-  />);
+  renderer.render(<Project name="test" imgsrc="null" content="testcontent" likes="0" />);
 
   const actual = renderer.getRenderOutput();
   const expect = (
     <div className="project">
       <h2>test</h2>
       <img
-        src="http://cdn.theatlantic.com/assets/media/img/photo/2015/11/images-from-the-2016-sony-world-pho/s01_130921474920553591/main_900.jpg?1448476701"
+        src="null"
         alt="project pic"
       />
-      <div>Content</div>
+      <div>testcontent</div>
+      <div className="likeBar">
+        <span>0 <button>+</button></span>
+      </div>
     </div>
   );
 

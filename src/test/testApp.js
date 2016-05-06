@@ -14,22 +14,23 @@ const testAppComponet = t => {
   const renderer = createRenderer();
   const project = [{
     name: 'proj1',
-    imgsrc: 'http://cdn.theatlantic.com/assets/media/img/photo/2015/11/images-from-the-2016-sony-world-pho/s01_130921474920553591/main_900.jpg?1448476701',
+    imgsrc: 'null',
+    content: 'null',
   }];
 
   renderer.render(
-    <App projects={project} />
+    <App projects={project} onClick="click" />
   );
 
   const actual = renderer.getRenderOutput();
   const expect = (
     <div>
       <h1 className="title">Gallery</h1>
+      <div className="nav">
+        <button onClick="click">Add Project</button>
+      </div>
       <div className="projectBox">
-        <Project
-          imgsrc="http://cdn.theatlantic.com/assets/media/img/photo/2015/11/images-from-the-2016-sony-world-pho/s01_130921474920553591/main_900.jpg?1448476701"
-          name="proj1"
-        />
+        <Project imgsrc="null" name="proj1" content="null" />
       </div>
     </div>
   );

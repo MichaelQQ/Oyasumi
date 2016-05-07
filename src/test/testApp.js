@@ -23,7 +23,7 @@ const testAppComponet = t => {
   }];
 
   renderer.render(
-    <App projects={project} onClick={onClick} />
+    <App projects={project} onAddProject={onClick} />
   );
 
   const actual = renderer.getRenderOutput();
@@ -34,7 +34,7 @@ const testAppComponet = t => {
         <button onClick={onClick}>Add Project</button>
       </div>
       <div className="projectBox">
-        <Project imgsrc="null" name="proj1" content="null" likes={0} addLike={addLike} />
+        <Project project={project[0]} />
       </div>
     </div>
   );

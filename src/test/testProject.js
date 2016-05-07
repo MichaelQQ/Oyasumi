@@ -8,10 +8,18 @@ import createProject from '../js/Project.js';
 
 const Project = createProject(React);
 const testProjectComponet = t => {
-  const addLike = () => ('addLikeEvent');
+  const onAddLike = () => ('addLikeEvent');
+
+  const project = {
+    name: 'test',
+    imgsrc: 'null',
+    content: 'testContent',
+    likes: 0,
+  };
+
   const renderer = createRenderer();
   renderer.render(
-    <Project name="test" imgsrc="null" content="testcontent" likes={0} addLike={addLike} />
+    <Project project={project} onAddLike={onAddLike} />
   );
 
   const actual = renderer.getRenderOutput();
@@ -22,9 +30,9 @@ const testProjectComponet = t => {
         src="null"
         alt="project pic"
       />
-      <div>testcontent</div>
+      <div>testContent</div>
       <div className="likeBar">
-        <span>0 <button onClick={addLike}>+</button></span>
+        <span>0 <button onClick={onAddLike}>+</button></span>
       </div>
     </div>
   );

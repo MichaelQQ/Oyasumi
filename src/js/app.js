@@ -1,38 +1,43 @@
 import createProject from './Project';
 
-export default React => {
-  const Project = createProject(React);
+export default (React, connect) => {
+  const Project = createProject(React, connect);
+
+  let nextProjectId = 5;
+  const addProject = () => (
+    {
+      type: 'ADD_PROJECT',
+      id: nextProjectId,
+      name: `Proj${nextProjectId++}`,
+      imgsrc: 'http://www.planwallpaper.com/static/images/image-slider-2.jpg',
+      content: 'test',
+      likes: 0,
+    }
+  );
+
+  const mapDispatchToProps = (dispatch) => ({
+    onAddProject: () => {
+      dispatch(addProject());
+    },
+  });
 
   const {
     array,
     func,
-    object,
   } = React.PropTypes;
 
   const app = ({ ...props }) => {
-    const { store, projects = [], onClick } = props;
+    const { projects = [], onAddProject } = props;
 
     return (
       <div>
         <h1 className="title">Gallery</h1>
         <div className="nav">
-          <button onClick={onClick}>Add Project</button>
+          <button onClick={onAddProject}>Add Project</button>
         </div>
         <div className="projectBox">
           {projects.map(project =>
-            <Project
-              key={project.id}
-              name={project.name}
-              imgsrc={project.imgsrc}
-              content={project.content}
-              likes={project.likes}
-              addLike={() => (
-                store.dispatch({
-                  type: 'ADD_LIKE',
-                  id: project.id,
-                })
-              )}
-            />
+            <Project project={project} key={project.id} />
           )}
         </div>
       </div>
@@ -40,10 +45,9 @@ export default React => {
   };
 
   app.propTypes = {
-    store: object.isRequired,
     projects: array.isRequired,
-    onClick: func.isRequired,
+    onAddProject: func.isRequired,
   };
 
-  return app;
+  return connect ? connect(null, mapDispatchToProps)(app) : app;
 };

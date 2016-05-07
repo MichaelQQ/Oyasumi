@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
+import { Provider, connect } from 'react-redux';
+
 import createApp from './App.js';
 
 const testData = [
@@ -37,8 +39,7 @@ const testData = [
   },
 ];
 
-let nextProjectId = 5;
-const App = createApp(React);
+const App = createApp(React, connect);
 
 const project = (state = [], action) => {
   switch (action.type) {
@@ -64,7 +65,7 @@ const project = (state = [], action) => {
   }
 };
 
-const projects = (state = testData, action) => {
+const projects = (state = [], action) => {
   switch (action.type) {
     case 'ADD_PROJECT':
       return [
@@ -78,31 +79,17 @@ const projects = (state = testData, action) => {
   }
 };
 
-const store = createStore(projects);
+// const store = createStore(projects);
 
-const addProject = () => (
-  {
-    type: 'ADD_PROJECT',
-    id: nextProjectId,
-    name: `Proj${nextProjectId++}`,
-    imgsrc: 'http://www.planwallpaper.com/static/images/image-slider-2.jpg',
-    content: 'test',
-    likes: 0,
-  }
+const store = createStore(projects, testData,
+  window.devToolsExtension ? window.devToolsExtension() : undefined
 );
 
 const render = () => {
   ReactDOM.render(
-    <div>
-      <App
-        store={store}
-        projects={store.getState()}
-        onClick={() => {
-          store.dispatch(addProject());
-        }
-      }
-      />
-    </div>,
+    <Provider store={store}>
+      <App projects={store.getState()} />
+    </Provider>,
     document.getElementById('root')
   );
 };

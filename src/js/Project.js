@@ -1,32 +1,37 @@
-export default React => {
+export default (React, connect) => {
   const {
-    string,
-    number,
+    object,
     func,
   } = React.PropTypes;
 
-  const project = ({ ...props }) => {
-    const { name, imgsrc, content, likes, addLike } = props;
+  const mapDispatchToProps = (dispatch) => ({
+    onAddLike: (id) => (
+      dispatch({
+        type: 'ADD_LIKE',
+        id,
+      })
+    ),
+  });
+
+  const Project = ({ ...props }) => {
+    const { project, onAddLike } = props;
 
     return (
-      <div className="project" >
-        <h2>{name}</h2>
-        <img src={imgsrc} alt="project pic" />
-        <div>{content}</div>
+      <div className="project">
+        <h2>{project.name}</h2>
+        <img src={project.imgsrc} alt="project pic" />
+        <div>{project.content}</div>
         <div className="likeBar">
-          <span>{likes} <button onClick={addLike}>+</button></span>
+          <span>{project.likes} <button onClick={() => onAddLike(project.id)}>+</button></span>
         </div>
       </div>
     );
   };
 
-  project.propTypes = {
-    name: string.isRequired,
-    imgsrc: string.isRequired,
-    content: string.isRequired,
-    likes: number.isRequired,
-    addLike: func.isRequired,
+  Project.propTypes = {
+    project: object.isRequired,
+    onAddLike: func.isRequired,
   };
 
-  return project;
+  return connect ? connect(null, mapDispatchToProps)(Project) : Project;
 };

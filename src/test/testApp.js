@@ -4,11 +4,8 @@ import React from 'react';
 import { createRenderer } from 'react-addons-test-utils';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 
-import createApp from '../js/App';
-import createProject from '../js/Project';
-
-const App = createApp(React);
-const Project = createProject(React);
+import { App } from '../js/App';
+import Project from '../js/Project';
 
 const testAppComponet = t => {
   const onClick = () => ('coClick');

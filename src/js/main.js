@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
-import { Provider, connect } from 'react-redux';
+import { Provider } from 'react-redux';
 
-import createApp from './App.js';
+import App from './App.js';
 
 const testData = [
   {
@@ -38,8 +38,6 @@ const testData = [
     likes: 0,
   },
 ];
-
-const App = createApp(React, connect);
 
 const project = (state = [], action) => {
   switch (action.type) {
@@ -88,7 +86,7 @@ const store = createStore(projects, testData,
 const render = () => {
   ReactDOM.render(
     <Provider store={store}>
-      <App projects={store.getState()} />
+      <App />
     </Provider>,
     document.getElementById('root')
   );

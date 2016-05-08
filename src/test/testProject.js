@@ -4,11 +4,10 @@ import React from 'react';
 import { createRenderer } from 'react-addons-test-utils';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 
-import createProject from '../js/Project.js';
+import { Project } from '../js/Project.js';
 
-const Project = createProject(React);
 const testProjectComponet = t => {
-  const onAddLike = () => ('addLikeEvent');
+  const onClick = () => {};
 
   const project = {
     name: 'test',
@@ -19,7 +18,7 @@ const testProjectComponet = t => {
 
   const renderer = createRenderer();
   renderer.render(
-    <Project project={project} onAddLike={onAddLike} />
+    <Project project={project} onAddLike={onClick} />
   );
 
   const actual = renderer.getRenderOutput();
@@ -32,7 +31,7 @@ const testProjectComponet = t => {
       />
       <div>testContent</div>
       <div className="likeBar">
-        <span>0 <button onClick={onAddLike}>+</button></span>
+        <span>0 <button onClick={onClick}>+</button></span>
       </div>
     </div>
   );

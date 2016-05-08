@@ -6,13 +6,15 @@ import reactElementToJSXString from 'react-element-to-jsx-string';
 
 import { App } from '../js/App';
 import Project from '../js/Project';
+import Obj from '../js/Obj';
 
 const testAppComponet = t => {
-  const onClick = () => ('coClick');
-  const addLike = () => ('addLike');
+  const onAddProject = () => {};
+
+  const onAddObject = () => {};
+
   const renderer = createRenderer();
   const project = [{
-    addLike,
     name: 'proj1',
     imgsrc: 'null',
     content: 'null',
@@ -20,7 +22,7 @@ const testAppComponet = t => {
   }];
 
   renderer.render(
-    <App projects={project} onAddProject={onClick} />
+    <App projects={project} onAddProject={onAddProject} onAddObject={onAddObject} />
   );
 
   const actual = renderer.getRenderOutput();
@@ -28,8 +30,10 @@ const testAppComponet = t => {
     <div>
       <h1 className="title">Gallery</h1>
       <div className="nav">
-        <button onClick={onClick}>Add Project</button>
+        <button onClick={onAddProject}>Add Project</button>
+        <button onClick={onAddObject}>Add Objects</button>
       </div>
+      <Obj />
       <div className="projectBox">
         <Project project={project[0]} />
       </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
 import App from './App.js';
@@ -77,9 +77,25 @@ const projects = (state = [], action) => {
   }
 };
 
+const objects = (state = [], action) => {
+  switch (action.type) {
+    case 'ADD_OBJECT':
+      return [
+        ...state, { id: action.id },
+      ];
+    default:
+      return state;
+  }
+};
+
+const mainReducer = combineReducers({
+  projects,
+  objects,
+});
+
 // const store = createStore(projects);
 
-const store = createStore(projects, testData,
+const store = createStore(mainReducer, { projects: testData },
   window.devToolsExtension ? window.devToolsExtension() : undefined
 );
 

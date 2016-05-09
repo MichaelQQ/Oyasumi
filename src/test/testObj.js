@@ -4,35 +4,22 @@ import React from 'react';
 import { createRenderer } from 'react-addons-test-utils';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 
-import { Project } from '../js/Project.js';
+import { Obj } from '../js/Obj.js';
 
-const testProjectComponet = t => {
-  const onClick = () => {};
-
-  const project = {
-    name: 'test',
-    imgsrc: 'null',
-    content: 'testContent',
-    likes: 0,
-  };
+const testObjectComponet = t => {
+  const objects = [{
+    id: 0,
+  }];
 
   const renderer = createRenderer();
   renderer.render(
-    <Project project={project} onAddLike={onClick} />
+    <Obj objects={objects} />
   );
 
   const actual = renderer.getRenderOutput();
   const expect = (
-    <div className="project">
-      <h2>test</h2>
-      <img
-        src="null"
-        alt="project pic"
-      />
-      <div>testContent</div>
-      <div className="likeBar">
-        <span>0 <button onClick={onClick}>+</button></span>
-      </div>
+    <div>
+      <span key={0} > 0 </span>
     </div>
   );
 
@@ -47,4 +34,4 @@ const testProjectComponet = t => {
   );
 };
 
-test('Test Project Componet', testProjectComponet);
+test('Test Object Componet', testObjectComponet);

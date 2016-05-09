@@ -1,41 +1,71 @@
-import createProject from './Project';
+import React from 'react';
+import { connect } from 'react-redux';
 
-export default React => {
-  const Project = createProject(React);
+import Obj from './Obj.js';
+import Project from './Project';
 
-  const {
-    array,
-    func,
-  } = React.PropTypes;
+let nextProjectId = 5;
+let nextObjId = 0;
 
-  const app = ({ ...props }) => {
-    const { projects = [], onClick } = props;
+const addProject = () => (
+  {
+    type: 'ADD_PROJECT',
+    id: nextProjectId,
+    name: `Proj${nextProjectId++}`,
+    imgsrc: 'http://www.planwallpaper.com/static/images/image-slider-2.jpg',
+    content: 'test',
+    likes: 0,
+  }
+);
 
-    return (
-      <div>
-        <h1 className="title">Gallery</h1>
-        <div className="nav">
-          <button onClick={onClick}>Add Project</button>
-        </div>
-        <div className="projectBox">
-          {projects.map(project =>
-            <Project
-              key={project.id}
-              name={project.name}
-              imgsrc={project.imgsrc}
-              content={project.content}
-              likes={project.likes}
-            />
-          )}
-        </div>
+const addObject = () => ({
+  type: 'ADD_OBJECT',
+  id: nextObjId++,
+});
+
+const mapStateToProps = (state) => ({
+  projects: state.projects,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onAddProject: () => {
+    dispatch(addProject());
+  },
+
+  onAddObject: () => {
+    dispatch(addObject());
+  },
+});
+
+const {
+  array,
+  func,
+} = React.PropTypes;
+
+export const App = ({ ...props }) => {
+  const { projects = [], onAddProject, onAddObject } = props;
+
+  return (
+    <div>
+      <h1 className="title">Gallery</h1>
+      <div className="nav">
+        <button onClick={onAddProject}>Add Project</button>
+        <button onClick={onAddObject}>Add Objects</button>
       </div>
-    );
-  };
-
-  app.propTypes = {
-    projects: array.isRequired,
-    onClick: func.isRequired,
-  };
-
-  return app;
+      <Obj />
+      <div className="projectBox">
+        {projects.map(project =>
+          <Project project={project} key={project.id} />
+        )}
+      </div>
+    </div>
+  );
 };
+
+App.propTypes = {
+  projects: array.isRequired,
+  onAddProject: func.isRequired,
+  onAddObject: func.isRequired,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

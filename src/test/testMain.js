@@ -1,2 +1,3 @@
-import './testApp';
+import './testObj';
 import './testProject';
+import './testApp';

@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
-import createApp from './App.js';
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+
+import App from './App.js';
 
 const testData = [
   {
@@ -37,9 +39,6 @@ const testData = [
   },
 ];
 
-let nextProjectId = 5;
-const App = createApp(React);
-
 const project = (state = [], action) => {
   switch (action.type) {
     case 'ADD_PROJECT':
@@ -50,47 +49,61 @@ const project = (state = [], action) => {
         content: action.content,
         likes: 0,
       };
+    case 'ADD_LIKE':
+      if (state.id !== action.id) {
+        return state;
+      }
+
+      return {
+        ...state,
+        likes: (state.likes + 1),
+      };
     default:
       return state;
   }
 };
 
-const projects = (state = testData, action) => {
+const projects = (state = [], action) => {
   switch (action.type) {
     case 'ADD_PROJECT':
       return [
         ...state,
         project(undefined, action),
       ];
+    case 'ADD_LIKE':
+      return state.map(s => project(s, action));
     default:
       return state;
   }
 };
 
-const store = createStore(projects);
-
-const addProject = () => (
-  {
-    type: 'ADD_PROJECT',
-    id: nextProjectId,
-    name: `Proj${nextProjectId++}`,
-    imgsrc: 'http://www.planwallpaper.com/static/images/image-slider-2.jpg',
-    content: 'test',
-    likes: 0,
+const objects = (state = [], action) => {
+  switch (action.type) {
+    case 'ADD_OBJECT':
+      return [
+        ...state, { id: action.id },
+      ];
+    default:
+      return state;
   }
+};
+
+const mainReducer = combineReducers({
+  projects,
+  objects,
+});
+
+// const store = createStore(projects);
+
+const store = createStore(mainReducer, { projects: testData },
+  window.devToolsExtension ? window.devToolsExtension() : undefined
 );
 
 const render = () => {
   ReactDOM.render(
-    <div>
-      <App
-        projects={store.getState()}
-        onClick={() => {
-          store.dispatch(addProject());
-        }
-      }
-      />
-    </div>,
+    <Provider store={store}>
+      <App />
+    </Provider>,
     document.getElementById('root')
   );
 };

@@ -4,22 +4,25 @@ import React from 'react';
 import { createRenderer } from 'react-addons-test-utils';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 
-import createApp from '../js/App';
-import createProject from '../js/Project';
-
-const App = createApp(React);
-const Project = createProject(React);
+import { App } from '../js/App';
+import Project from '../js/Project';
+import Obj from '../js/Obj';
 
 const testAppComponet = t => {
+  const onAddProject = () => {};
+
+  const onAddObject = () => {};
+
   const renderer = createRenderer();
   const project = [{
     name: 'proj1',
     imgsrc: 'null',
     content: 'null',
+    likes: 0,
   }];
 
   renderer.render(
-    <App projects={project} onClick="click" />
+    <App projects={project} onAddProject={onAddProject} onAddObject={onAddObject} />
   );
 
   const actual = renderer.getRenderOutput();
@@ -27,10 +30,12 @@ const testAppComponet = t => {
     <div>
       <h1 className="title">Gallery</h1>
       <div className="nav">
-        <button onClick="click">Add Project</button>
+        <button onClick={onAddProject}>Add Project</button>
+        <button onClick={onAddObject}>Add Objects</button>
       </div>
+      <Obj />
       <div className="projectBox">
-        <Project imgsrc="null" name="proj1" content="null" />
+        <Project project={project[0]} />
       </div>
     </div>
   );

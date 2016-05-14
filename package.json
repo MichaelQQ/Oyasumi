@@ -10,7 +10,8 @@
     "pretest": "echo \"=> Linting\" && eslint ./src/**/*.js",
     "test": "echo \"=> Testing\" && babel-node src/test/testMain.js | faucet",
     "watch": "watch 'clear && npm run test -s' src",
-    "dev": "babel-node devServer.js"
+    "dev": "babel-node devServer.js",
+    "update": "updtr"
   },
   "repository": {
     "type": "git",
@@ -28,16 +29,17 @@
     "babel-preset-stage-0": "^6.5.0",
     "deep-freeze": "0.0.1",
     "eslint": "^2.9.0",
-    "eslint-config-airbnb": "^8.0.0",
-    "eslint-plugin-import": "^1.6.1",
-    "eslint-plugin-jsx-a11y": "^1.0.4",
-    "eslint-plugin-react": "^5.0.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.8.0",
+    "eslint-plugin-jsx-a11y": "^1.2.0",
+    "eslint-plugin-react": "^5.1.1",
     "express": "^4.13.4",
     "faucet": "0.0.1",
     "react-addons-test-utils": "^15.0.2",
     "react-element-to-jsx-string": "^2.6.1",
     "rimraf": "^2.5.2",
     "tape": "^4.5.1",
+    "updtr": "^0.1.14",
     "watch": "^0.18.0",
     "webpack": "^1.13.0",
     "webpack-dev-middleware": "^1.6.1"

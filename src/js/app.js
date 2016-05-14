@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 
 import Obj from './Obj.js';
 import Project from './Project';
@@ -42,25 +44,46 @@ const {
   func,
 } = React.PropTypes;
 
-export const App = ({ ...props }) => {
-  const { projects = [], onAddProject, onAddObject } = props;
+const defaultProjects = [];
+export class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+    this.addObject = this.addObject.bind(this);
+    this.addProject = this.addProject.bind(this);
+  }
 
-  return (
-    <div>
-      <h1 className="title">Gallery</h1>
-      <div className="nav">
-        <button onClick={onAddProject}>Add Project</button>
-        <button onClick={onAddObject}>Add Objects</button>
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
+
+  addObject() {
+    return this.props.onAddProject();
+  }
+
+  addProject() {
+    return this.props.onAddObject();
+  }
+
+  render() {
+    const { projects } = this.props;
+    return (
+      <div>
+        <h1 className="title">Gallery</h1>
+        <div className="nav">
+          <button onClick={this.addObject}>Add Project</button>
+          <button onClick={this.addProject}>Add Objects</button>
+        </div>
+        <Obj />
+        <div className="projectBox">
+          {projects.map(project =>
+            <Project project={project} key={project.id} />
+          ) || defaultProjects}
+        </div>
       </div>
-      <Obj />
-      <div className="projectBox">
-        {projects.map(project =>
-          <Project project={project} key={project.id} />
-        )}
-      </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 App.propTypes = {
   projects: array.isRequired,

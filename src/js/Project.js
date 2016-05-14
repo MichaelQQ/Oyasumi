@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 
 const {
   object,
@@ -15,20 +17,35 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export const Project = ({ ...props }) => {
-  const { project, onAddLike } = props;
+export class Project extends React.Component {
+  constructor(props) {
+    super(props);
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+    this.addLike = this.addLike.bind(this);
+  }
 
-  return (
-    <div className="project">
-      <h2>{project.name}</h2>
-      <img src={project.imgsrc} alt="project pic" />
-      <div>{project.content}</div>
-      <div className="likeBar">
-        <span>{project.likes} <button onClick={() => onAddLike(project.id)}>+</button></span>
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
+  }
+
+  addLike() {
+    return this.props.onAddLike(this.props.project.id);
+  }
+
+  render() {
+    const { project } = this.props;
+    return (
+      <div className="project">
+        <h2>{project.name}</h2>
+        <img src={project.imgsrc} alt="project pic" />
+        <div>{project.content}</div>
+        <div className="likeBar">
+          <span>{project.likes} <button onClick={this.addLike}>+</button></span>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 Project.propTypes = {
   project: object.isRequired,

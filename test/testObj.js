@@ -1,10 +1,10 @@
-import test from 'tape';
+import { test } from 'tape';
 import deepFreeze from 'deep-freeze';
 import React from 'react';
 import { createRenderer } from 'react-addons-test-utils';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 
-import { Obj } from '../js/Obj.js';
+import { Obj } from '../src/js/Obj.js';
 
 const testObjectComponet = t => {
   const objects = [{

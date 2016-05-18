@@ -1,24 +1,30 @@
 {
-    "parser": "babel-eslint",
-    "rules": {
-        "indent": [2],
-        "quotes": [2, "single"],
-        "linebreak-style": [2, "unix"],
-        "semi": [2, "always"],
-        "no-console": [1]
+  "parser": "babel-eslint",
+  "rules": {
+    "indent": [2],
+    "quotes": [2, "single"],
+    "linebreak-style": [2, "unix"],
+    "semi": [2, "always"],
+    "no-console": [1]
+  },
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true
+  },
+  "extends": "airbnb",
+  "ecmaFeatures": {
+    "arrowFunctions": true,
+    "jsx": true,
+    "experimentalObjectRestSpread": true
+  },
+  "settings": {
+    "import/resolve": {
+    "extensions": [ ".es6", ".js", ".jsx" ]
     },
-    "env": {
-        "es6": true,
-        "node": true,
-        "browser": true
-    },
-    "extends": "airbnb",
-    "ecmaFeatures": {
-        "arrowFunctions": true,
-        "jsx": true,
-        "experimentalObjectRestSpread": true
-    },
-    "plugins": [
-        "react"
-    ]
+    "import/parser": "babel-eslint"
+  },
+  "plugins": [
+    "react"
+  ]
 }

@@ -2,6 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
+import { whyDidYouUpdate } from 'why-did-you-update';
+
+if (process.env.NODE_ENV !== 'production') {
+  whyDidYouUpdate(React);
+}
 
 import App from './App.js';
 

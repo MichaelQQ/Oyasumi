@@ -1,10 +1,10 @@
-import test from 'tape';
+import { test } from 'tape';
 import deepFreeze from 'deep-freeze';
 import React from 'react';
 import { createRenderer } from 'react-addons-test-utils';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 
-import { Project } from '../js/Project.js';
+import { Project } from '../src/js/Project.js';
 
 const testProjectComponet = t => {
   const onClick = () => {};

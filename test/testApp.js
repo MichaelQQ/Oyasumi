@@ -1,12 +1,12 @@
-import test from 'tape';
+import { test } from 'tape';
 import deepFreeze from 'deep-freeze';
 import React from 'react';
 import { createRenderer } from 'react-addons-test-utils';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 
-import { App } from '../js/App';
-import Project from '../js/Project';
-import Obj from '../js/Obj';
+import { App } from '../src/js/App';
+import Project from '../src/js/Project';
+import Obj from '../src/js/Obj';
 
 const testAppComponet = t => {
   const onAddProject = () => {};

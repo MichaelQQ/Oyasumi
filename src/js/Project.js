@@ -1,27 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { whyDidYouUpdate } from 'why-did-you-update';
-
-if (process.env.NODE_ENV !== 'production') {
-  whyDidYouUpdate(React);
-}
 
 const {
   object,
   func,
 } = React.PropTypes;
-
-const makeMapStateToProps = (initialState, initialOwnProps) => {
-  const { id } = initialOwnProps;
-  const mapStateToProps = (state) => {
-    const { projects } = state;
-    const project = projects[id];
-    return {
-      project,
-    };
-  };
-  return mapStateToProps;
-};
 
 const mapDispatchToProps = (dispatch) => ({
   onAddLike: (id) => {
@@ -52,4 +35,7 @@ Project.propTypes = {
   onAddLike: func.isRequired,
 };
 
-export default connect(makeMapStateToProps, mapDispatchToProps)(Project);
+export default connect(
+  (initialState, initialOwnProps) => (state) => ({
+    project: state.projects[initialOwnProps.projectId],
+  }), mapDispatchToProps)(Project);

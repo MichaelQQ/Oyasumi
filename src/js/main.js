@@ -2,15 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import { whyDidYouUpdate } from 'why-did-you-update';
 
-if (process.env.NODE_ENV !== 'production') {
-  whyDidYouUpdate(React);
-}
+// import { whyDidYouUpdate } from 'why-did-you-update';
+//
+// if (process.env.NODE_ENV !== 'production') {
+//   whyDidYouUpdate(React);
+// }
 
 import App from './App.js';
 
-const testData = {
+const initProjectId = [0, 1, 2, 3, 4];
+const initProjects = {
   0: {
     id: 0,
     name: 'First',
@@ -114,9 +116,7 @@ const mainReducer = combineReducers({
   objects,
 });
 
-// const store = createStore(projects);
-
-const store = createStore(mainReducer, { projectId: [0, 1, 2, 3, 4], projects: testData },
+const store = createStore(mainReducer, { projectId: initProjectId, projects: initProjects },
   window.devToolsExtension ? window.devToolsExtension() : undefined
 );
 

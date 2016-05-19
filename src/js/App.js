@@ -1,10 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { whyDidYouUpdate } from 'why-did-you-update';
-
-if (process.env.NODE_ENV !== 'production') {
-  whyDidYouUpdate(React);
-}
 
 import Obj from './Obj.js';
 import Project from './Project';
@@ -30,7 +25,6 @@ const addObject = () => ({
 
 const mapStateToProps = (state) => ({
   projectId: state.projectId,
-  projects: state.projects,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -44,13 +38,12 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const {
-  object,
   array,
   func,
 } = React.PropTypes;
 
 export const App = ({ ...props }) => {
-  const { projectId = [], projects = {}, onAddProject, onAddObject } = props;
+  const { projectId = [], onAddProject, onAddObject } = props;
 
   return (
     <div>
@@ -61,9 +54,7 @@ export const App = ({ ...props }) => {
       </div>
       <Obj />
       <div className="projectBox">
-        {projectId.map(id =>
-          <Project project={projects[id]} key={id} />
-        )}
+        {projectId.map(id => <Project projectId={id} key={id} />)}
       </div>
     </div>
   );
@@ -71,7 +62,6 @@ export const App = ({ ...props }) => {
 
 App.propTypes = {
   projectId: array.isRequired,
-  projects: object.isRequired,
   onAddProject: func.isRequired,
   onAddObject: func.isRequired,
 };

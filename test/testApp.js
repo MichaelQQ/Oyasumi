@@ -14,15 +14,9 @@ const testAppComponet = t => {
   const onAddObject = () => {};
 
   const renderer = createRenderer();
-  const project = [{
-    name: 'proj1',
-    imgsrc: 'null',
-    content: 'null',
-    likes: 0,
-  }];
 
   renderer.render(
-    <App projects={project} onAddProject={onAddProject} onAddObject={onAddObject} />
+    <App projectId={[0]} onAddProject={onAddProject} onAddObject={onAddObject} />
   );
 
   const actual = renderer.getRenderOutput();
@@ -35,7 +29,7 @@ const testAppComponet = t => {
       </div>
       <Obj />
       <div className="projectBox">
-        <Project project={project[0]} />
+        <Project projectId={0} />
       </div>
     </div>
   );

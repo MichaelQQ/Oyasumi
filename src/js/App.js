@@ -29,6 +29,7 @@ const addObject = () => ({
 });
 
 const mapStateToProps = (state) => ({
+  projectId: state.projectId,
   projects: state.projects,
 });
 
@@ -43,12 +44,13 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const {
+  object,
   array,
   func,
 } = React.PropTypes;
 
 export const App = ({ ...props }) => {
-  const { projects = [], onAddProject, onAddObject } = props;
+  const { projectId = [], projects = {}, onAddProject, onAddObject } = props;
 
   return (
     <div>
@@ -59,8 +61,8 @@ export const App = ({ ...props }) => {
       </div>
       <Obj />
       <div className="projectBox">
-        {projects.map(project =>
-          <Project project={project} key={project.id} />
+        {projectId.map(id =>
+          <Project project={projects[id]} key={id} />
         )}
       </div>
     </div>
@@ -68,7 +70,8 @@ export const App = ({ ...props }) => {
 };
 
 App.propTypes = {
-  projects: array.isRequired,
+  projectId: array.isRequired,
+  projects: object.isRequired,
   onAddProject: func.isRequired,
   onAddObject: func.isRequired,
 };

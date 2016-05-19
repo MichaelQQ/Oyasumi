@@ -11,6 +11,18 @@ const {
   func,
 } = React.PropTypes;
 
+const makeMapStateToProps = (initialState, initialOwnProps) => {
+  const { id } = initialOwnProps;
+  const mapStateToProps = (state) => {
+    const { projects } = state;
+    const project = projects[id];
+    return {
+      project,
+    };
+  };
+  return mapStateToProps;
+};
+
 const mapDispatchToProps = (dispatch) => ({
   onAddLike: (id) => {
     dispatch({
@@ -40,4 +52,4 @@ Project.propTypes = {
   onAddLike: func.isRequired,
 };
 
-export default connect(null, mapDispatchToProps)(Project);
+export default connect(makeMapStateToProps, mapDispatchToProps)(Project);

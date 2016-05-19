@@ -1,10 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { whyDidYouUpdate } from 'why-did-you-update';
-
-if (process.env.NODE_ENV !== 'production') {
-  whyDidYouUpdate(React);
-}
 
 const {
   object,
@@ -40,4 +35,7 @@ Project.propTypes = {
   onAddLike: func.isRequired,
 };
 
-export default connect(null, mapDispatchToProps)(Project);
+export default connect(
+  (initialState, initialOwnProps) => (state) => ({
+    project: state.projects[initialOwnProps.projectId],
+  }), mapDispatchToProps)(Project);

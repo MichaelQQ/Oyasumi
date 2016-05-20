@@ -1,12 +1,12 @@
-import test from 'tape';
+import { test } from 'tape';
 import deepFreeze from 'deep-freeze';
 import React from 'react';
 import { createRenderer } from 'react-addons-test-utils';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 
-import { App } from '../js/App';
-import Project from '../js/Project';
-import Obj from '../js/Obj';
+import { App } from '../src/js/App';
+import Project from '../src/js/Project';
+import Obj from '../src/js/Obj';
 
 const testAppComponet = t => {
   const onAddProject = () => {};
@@ -14,15 +14,9 @@ const testAppComponet = t => {
   const onAddObject = () => {};
 
   const renderer = createRenderer();
-  const project = [{
-    name: 'proj1',
-    imgsrc: 'null',
-    content: 'null',
-    likes: 0,
-  }];
 
   renderer.render(
-    <App projects={project} onAddProject={onAddProject} onAddObject={onAddObject} />
+    <App projectId={[0]} onAddProject={onAddProject} onAddObject={onAddObject} />
   );
 
   const actual = renderer.getRenderOutput();
@@ -35,7 +29,7 @@ const testAppComponet = t => {
       </div>
       <Obj />
       <div className="projectBox">
-        <Project project={project[0]} />
+        <Project projectId={0} />
       </div>
     </div>
   );

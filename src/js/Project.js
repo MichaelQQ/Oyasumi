@@ -52,4 +52,7 @@ Project.propTypes = {
   onAddLike: func.isRequired,
 };
 
-export default connect(null, mapDispatchToProps)(Project);
+export default connect(
+  (initialState, initialOwnProps) => (state) => ({
+    project: state.projects[initialOwnProps.projectId],
+  }), mapDispatchToProps)(Project);

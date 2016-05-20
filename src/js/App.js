@@ -26,7 +26,7 @@ const addObject = () => ({
 });
 
 const mapStateToProps = (state) => ({
-  projects: state.projects,
+  projectId: state.projectId,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -44,7 +44,6 @@ const {
   func,
 } = React.PropTypes;
 
-const defaultProjects = [];
 export class App extends React.Component {
   constructor(props) {
     super(props);
@@ -66,7 +65,7 @@ export class App extends React.Component {
   }
 
   render() {
-    const { projects } = this.props;
+    const { projectId } = this.props;
     return (
       <div>
         <h1 className="title">Gallery</h1>
@@ -76,9 +75,7 @@ export class App extends React.Component {
         </div>
         <Obj />
         <div className="projectBox">
-          {projects.map(project =>
-            <Project project={project} key={project.id} />
-          ) || defaultProjects}
+          {projectId.map(id => <Project projectId={id} key={id} />)}
         </div>
       </div>
     );
@@ -86,7 +83,7 @@ export class App extends React.Component {
 }
 
 App.propTypes = {
-  projects: array.isRequired,
+  projectId: array.isRequired,
   onAddProject: func.isRequired,
   onAddObject: func.isRequired,
 };

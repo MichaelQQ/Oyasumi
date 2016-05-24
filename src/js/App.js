@@ -68,7 +68,6 @@ export class App extends React.Component {
     const { projectId } = this.props;
     return (
       <div>
-        <h1 className="title">Gallery</h1>
         <div className="nav">
           <button onClick={this.addObject}>Add Project</button>
           <button onClick={this.addProject}>Add Objects</button>

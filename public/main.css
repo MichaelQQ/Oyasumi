@@ -1,0 +1,54 @@
+* {
+  font-family: 'Pacifico', cursive;
+  margin: 0;
+}
+#root {
+  background-color: #B6D0FF;
+}
+.title {
+  text-align: center;
+  height: 1rem;
+}
+.nav {
+  font-size: 3em;
+  margin: 5px;
+  display: inline-block;
+}
+.nav > button {
+  border-radius: 10px;
+  background-color: aquamarine;
+  border-color: aquamarine;
+  font-size: 24px;
+  margin: 0 3px;
+}
+.projectBox {
+  display: flex;
+  flex-flow: row wrap;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: stretch;
+}
+.project {
+  background: rgb(253, 249, 198);
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+  border: 1px solid rgba(195, 169, 169, 1);
+  max-width: 35vw;
+}
+.project > img {
+  max-height: 250px;
+  max-width: 35vw;
+}
+.likeBar {
+  font-size: 2em;
+  text-align: left;
+  margin-left: 30px;
+}
+.like-btn {
+  margin-right: 4px;
+  font-size: 1.3rem;
+  background-color: deepskyblue;
+  border: deepskyblue;
+  border-radius: 5px;
+}

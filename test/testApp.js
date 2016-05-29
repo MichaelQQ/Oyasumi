@@ -22,9 +22,8 @@ const testAppComponet = t => {
   const actual = renderer.getRenderOutput();
   const expect = (
     <div>
-      <h1 className="title">Gallery</h1>
       <div className="nav">
-        <button onClick={onAddProject}>Add Project</button>
+        <button onClick={onAddProject}>Search</button>
         <button onClick={onAddObject}>Add Objects</button>
       </div>
       <Obj />

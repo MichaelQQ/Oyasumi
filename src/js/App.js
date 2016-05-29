@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Obj from './Obj.js';
+import ObjList from './ObjList.js';
 import Project from './Project';
 
 let nextProjectId = 5;
@@ -47,12 +47,11 @@ export const App = ({ ...props }) => {
 
   return (
     <div>
-      <h1 className="title">Gallery</h1>
       <div className="nav">
-        <button onClick={onAddProject}>Add Project</button>
+        <button onClick={onAddProject}>Search</button>
         <button onClick={onAddObject}>Add Objects</button>
       </div>
-      <Obj />
+      <ObjList />
       <div className="projectBox">
         {projectId.map(id => <Project projectId={id} key={id} />)}
       </div>

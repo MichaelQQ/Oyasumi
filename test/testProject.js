@@ -31,7 +31,15 @@ const testProjectComponet = t => {
       />
       <div>testContent</div>
       <div className="likeBar">
-        <span>0 <button onClick={onClick}>+</button></span>
+        <span>
+          <input
+            type="button"
+            className="like-btn"
+            onClick={onClick}
+            value="Like"
+          />
+          0
+        </span>
       </div>
     </div>
   );

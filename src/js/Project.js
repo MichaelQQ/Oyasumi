@@ -6,6 +6,10 @@ const {
   func,
 } = React.PropTypes;
 
+const makeMapStateToProps = (initialState, initialOwnProps) => (state) => ({
+  project: state.projects[initialOwnProps.projectId],
+});
+
 const mapDispatchToProps = (dispatch) => ({
   onAddLike: (id) => {
     dispatch({
@@ -24,7 +28,15 @@ export const Project = ({ ...props }) => {
       <img src={project.imgsrc} alt="project pic" />
       <div>{project.content}</div>
       <div className="likeBar">
-        <span>{project.likes} <button onClick={() => onAddLike(project.id)}>+</button></span>
+        <span>
+          <input
+            type="button"
+            className="like-btn"
+            onClick={() => onAddLike(project.id)}
+            value="Like"
+          />
+          {project.likes}
+        </span>
       </div>
     </div>
   );
@@ -35,7 +47,4 @@ Project.propTypes = {
   onAddLike: func.isRequired,
 };
 
-export default connect(
-  (initialState, initialOwnProps) => (state) => ({
-    project: state.projects[initialOwnProps.projectId],
-  }), mapDispatchToProps)(Project);
+export default connect(makeMapStateToProps, mapDispatchToProps)(Project);

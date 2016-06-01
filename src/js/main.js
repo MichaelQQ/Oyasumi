@@ -11,46 +11,7 @@ import { Provider } from 'react-redux';
 
 import App from './App.js';
 
-const initProjectId = [0, 1, 2, 3, 4];
-const initProjects = {
-  0: {
-    id: 0,
-    name: 'First',
-    imgsrc: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRfjSMz2XipFY-Hh9A9d9omkI49ZMYUhyrBZWuBrGXGIm7b8znUWw',
-    content: '',
-    likes: 0,
-  },
-  1: {
-    id: 1,
-    name: 'Second',
-    imgsrc: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRFyS_XNNfmivOYbvP8KxZWiwu4ccXZA1jJUyGajQuV8dXswZvV',
-    content: '',
-    likes: 0,
-  },
-  2: {
-    id: 2,
-    name: 'Third',
-    imgsrc: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQMThXMPYBdFhtaOe6Z0UefWWpBtRskOu4ojsCoXcvJ3HKnHVGQ',
-    content: '',
-    likes: 0,
-  },
-  3: {
-    id: 3,
-    name: 'Forth',
-    imgsrc: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSwlIwuZ1QYVo3_2eFj6IH2FeuYqC91SO-pK43wlwzE0tmgbZn0OA',
-    content: '',
-    likes: 0,
-  },
-  4: {
-    id: 4,
-    name: 'Fifth',
-    imgsrc: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTkQFCHD7dZ4XNX3QDPa0ZQQlYrSoFB72IKmBDo_tF_DxlWWTLYXQ',
-    content: '',
-    likes: 0,
-  },
-};
-
-const project = (state = [], action) => {
+const project = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_PROJECT':
       return {
@@ -70,7 +31,7 @@ const project = (state = [], action) => {
   }
 };
 
-const projects = (state = [], action) => {
+const projects = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_PROJECT':
       return {
@@ -82,6 +43,8 @@ const projects = (state = [], action) => {
         ...state,
         [action.id]: project(state[action.id], action),
       };
+    case 'SET_PAGE':
+      return {};
     default:
       return state;
   }
@@ -94,17 +57,57 @@ const projectId = (state = [], action) => {
         ...state,
         action.id,
       ];
+    case 'SET_PAGE':
+      return [];
     default:
       return state;
   }
 };
 
-const objects = (state = [], action) => {
+const objects = (state = {}, action) => {
+  switch (action.type) {
+    case 'ADD_OBJECT':
+      return {
+        ...state,
+        [action.id]: action.id,
+      };
+    default:
+      return state;
+  }
+};
+
+const objectId = (state = [], action) => {
   switch (action.type) {
     case 'ADD_OBJECT':
       return [
-        ...state, { id: action.id },
+        ...state,
+        action.id,
       ];
+    default:
+      return state;
+  }
+};
+
+let searchTag;
+const searchInfo = (state = {}, action) => {
+  switch (action.type) {
+    case 'TEXT_CHANGE':
+      return {
+        ...state,
+        tag: action.tag,
+      };
+    case 'SET_PAGE':
+      return {
+        ...state,
+        maxPage: action.maxPage,
+      };
+    case 'SEARCH':
+      searchTag(action.tag, action.page);
+      return {
+        ...state,
+        tag: action.tag,
+        page: action.page,
+      };
     default:
       return state;
   }
@@ -114,9 +117,15 @@ const mainReducer = combineReducers({
   projects,
   projectId,
   objects,
+  objectId,
+  searchInfo,
 });
 
-const store = createStore(mainReducer, { projectId: initProjectId, projects: initProjects },
+const initSearchInfo = {
+  tag: '',
+};
+
+const store = createStore(mainReducer, { searchInfo: initSearchInfo },
   window.devToolsExtension ? window.devToolsExtension() : undefined
 );
 
@@ -131,3 +140,39 @@ const render = () => {
 
 store.subscribe(render);
 render();
+
+const addProject = (id, name, imgsrc) => ({
+  type: 'ADD_PROJECT',
+  id,
+  name,
+  imgsrc,
+  content: '',
+  likes: 0,
+});
+
+// flickr
+const fetchUrl = (url, cb) =>
+  fetch(url)
+  .then(r => r.json())
+  .then(cb);
+
+const generateImgSrc = (farm, server, id, secret) =>
+  `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`;
+
+const createPhotoCard = p =>
+  store.dispatch(addProject(p.id, p.title, generateImgSrc(p.farm, p.server, p.id, p.secret)));
+
+const getDetail = json => {
+  // console.log(json);
+  store.dispatch({
+    type: 'SET_PAGE',
+    maxPage: +json.photos.pages,
+  });
+  return json.photos.photo.map(createPhotoCard);
+};
+
+// fetchUrl(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&text=${text}&page=${page}&sort=${sort}&format=json&nojsoncallback=1`, getDetail);
+
+const search = (apiKey, sort, page, text) => (text, page) => fetchUrl(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&text=${text}&page=${page}&sort=${sort}&format=json&nojsoncallback=1`, getDetail);
+
+searchTag = search('', 'relevance');

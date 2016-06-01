@@ -20,23 +20,19 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export const Project = ({ ...props }) => {
-  const { project, onAddLike } = props;
+  const { project } = props;
+
+  // const divStyle = {
+  //   backgroundImage: `url(${project.imgsrc})`,
+  // };
 
   return (
     <div className="project">
-      <h2>{project.name}</h2>
-      <img src={project.imgsrc} alt="project pic" />
-      <div>{project.content}</div>
-      <div className="likeBar">
-        <span>
-          <input
-            type="button"
-            className="like-btn"
-            onClick={() => onAddLike(project.id)}
-            value="Like"
-          />
-          {project.likes}
-        </span>
+      <div className="project-img">
+        <img src={project.imgsrc} alt={project.name} onShow={(e) => console.log('show',e)} />
+      </div>
+      <div className="project-view">
+        <div className="project-bar">{project.name}</div>
       </div>
     </div>
   );

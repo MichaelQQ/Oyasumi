@@ -2,24 +2,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const {
-  array,
+  number,
 } = React.PropTypes;
 
-const mapStateToProps = (state) => ({
-  objects: state.objects,
+const makeMapStateToProps = (initialState, initialOwnProps) => (state) => ({
+  objValue: state.objects[initialOwnProps.ObjId],
 });
 
 export const Obj = ({ ...props }) => {
-  const { objects = [] } = props;
-  return (
-    <div>
-      {objects.map(obj => <span key={obj.id}> {obj.id} </span>)}
-    </div>
-  );
+  const { objValue } = props;
+
+  return (<span> {objValue} </span>);
 };
 
 Obj.propTypes = {
-  objects: array.isRequired,
+  objValue: number.isRequired,
 };
 
-export default connect(mapStateToProps)(Obj);
+export default connect(makeMapStateToProps)(Obj);

@@ -55,14 +55,14 @@ a {
   background-repeat: no-repeat;
   background-size: cover;
 }
-.thumbnail-view {
+.thumbnail-cover {
   position: relative;
   height: inherit;
   width: 100%;
   opacity: 0;
   font-size: 1.2rem;
 }
-.thumbnail-view:hover {
+.thumbnail-cover:hover {
   color: white;
   background-color: rgba(0, 0, 0, 0.4);
   opacity: 1;

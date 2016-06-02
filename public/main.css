@@ -33,7 +33,7 @@ a {
   font-size: 1.3rem;
   margin: 0 3px;
 }
-.projectBox {
+.thumbnailList {
   display: flex;
   flex-flow: row wrap;
   flex-wrap: wrap;
@@ -41,7 +41,7 @@ a {
   align-content: stretch;
   margin-top: 30px;
 }
-.project {
+.thumbnail {
   /*flex-grow: 1;*/
   margin: 5px 10px;
   text-align: right;
@@ -55,25 +55,25 @@ a {
   background-repeat: no-repeat;
   background-size: cover;
 }
-.project-view {
+.thumbnail-view {
   position: relative;
   height: inherit;
   width: 100%;
   opacity: 0;
   font-size: 1.2rem;
 }
-.project-view:hover {
+.thumbnail-view:hover {
   color: white;
   background-color: rgba(0, 0, 0, 0.4);
   opacity: 1;
 }
-.project-img {
+.thumbnail-img {
   position: absolute;
   left: 0px;
   right: 0px;
   width: 100%;
 }
-.project-bar {
+.thumbnail-bar {
   position: absolute;
   right: 3px;
   bottom: 3px;

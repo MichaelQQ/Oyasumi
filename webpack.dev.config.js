@@ -1,26 +1,29 @@
 const path = require('path');
 
 module.exports = {
-  devtool: 'eval',
+  devtool: 'eval-source-map',
   resolve: {
-    root: __dirname + '/src/js'
+    root: __dirname + '/src/',
   },
   entry: [
-    './src/js/main'
+    'babel-polyfill',
+    './src/main',
   ],
   output: {
     path: path.join(__dirname, 'build/js'),
     filename: 'main.js',
-    publicPath: '/js/',
+    publicPath: '/',
   },
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loader: 'babel-loader',
-      include: path.join(__dirname, 'src/js'),
-      query: {
-        presets: ['es2015', 'stage-0', 'react']
-      }
-    }]
-  }
+    loaders: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        include: path.join(__dirname, 'src/'),
+        query: {
+          presets: ['es2015', 'stage-0', 'react'],
+        },
+      },
+    ],
+  },
 };

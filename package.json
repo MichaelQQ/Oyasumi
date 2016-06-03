@@ -8,7 +8,7 @@
     "prebuild": "echo \"=> Cleaning\" && rimraf build/*",
     "build": "echo \"=> Building\" && npm run test && npm run bundle",
     "pretest": "echo \"=> Linting\" && eslint ./src/**/*.js",
-    "test": "echo \"=> Testing\" && babel-tape-runner test/*.js | tap-spec",
+    "test": "echo \"=> Testing\" && babel-tape-runner src/**/test/*.js | tap-spec",
     "watch": "watch 'clear && npm run test -s' src test",
     "dev": "babel-node devServer.js",
     "update": "updtr"

@@ -5,7 +5,8 @@
     "quotes": [2, "single"],
     "linebreak-style": [2, "unix"],
     "semi": [2, "always"],
-    "no-console": [1]
+    "no-console": [1],
+    "no-underscore-dangle": [1]
   },
   "env": {
     "es6": true,

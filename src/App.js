@@ -1,41 +1,37 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import ThumbnailList from './containers/thumbnaillist';
 import SearchformContainer from './containers/searchformContainer';
 
-export const App = ({ ...props }) => {
-  // const { tag, page, maxPage, onSearch } = props;
+export const App = () =>
+  <div>
+    <h1 className="title-bar">
+      <span className="title">Oyasumi</span>
+      <SearchformContainer />
+    </h1>
 
-  return (
-    <div>
-      <h1 className="title-bar">
-        <span className="title">Oyasumi</span>
-        <SearchformContainer />
-      </h1>
-      {/*<div>
-        <a href="#"><div
-          className="page-nav"
-          onClick={() => {
-            if (page > 1) {
-              onSearch(tag, page - 1);
-            }
-          }}
-        > &lt; </div></a>
-        {page} / {maxPage}
-        <a href="#"><div
-          className="page-nav"
-          onClick={() => {
-            if (page < maxPage) {
-              onSearch(tag, page + 1);
-            }
-          }}
-        > &gt; </div></a>
-      </div>*/}
-      <ThumbnailList />
-    </div>
-  );
-};
+    <ThumbnailList />
+  </div>;
+
+/* <div>
+  <a href="#"><div
+    className="page-nav"
+    onClick={() => {
+      if (page > 1) {
+        onSearch(tag, page - 1);
+      }
+    }}
+  > &lt; </div></a>
+  {page} / {maxPage}
+  <a href="#"><div
+    className="page-nav"
+    onClick={() => {
+      if (page < maxPage) {
+        onSearch(tag, page + 1);
+      }
+    }}
+  > &gt; </div></a>
+</div> */
 
 // const mapStateToProps = (state) => ({
 //   tag: state.searchInfo.tag,
@@ -56,5 +52,4 @@ export const App = ({ ...props }) => {
 //   onSearch: func.isRequired,
 // };
 
-// export default connect(mapStateToProps)(App);
 export default App;

@@ -2,7 +2,6 @@ import { test } from 'tape';
 import deepFreeze from 'deep-freeze';
 import React from 'react';
 import { createRenderer } from 'react-addons-test-utils';
-import reactElementToJSXString from 'react-element-to-jsx-string';
 
 import Searchform from '../index';
 
@@ -34,12 +33,8 @@ const testSearchform = t => {
   deepFreeze(expect);
   deepFreeze(actual);
 
-  t.plan(1);
-  t.equal(
-    reactElementToJSXString(actual),
-    reactElementToJSXString(expect),
-    '<Searchform /> must equal the expect dom'
-  );
+  t.deepEqual(actual, expect, '<Searchform /> must equal the expect dom');
+  t.end();
 };
 
 test('Test Searchform Componet', testSearchform);

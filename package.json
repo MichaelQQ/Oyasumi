@@ -37,7 +37,6 @@
     "eslint-plugin-react": "^5.1.1",
     "express": "^4.13.4",
     "react-addons-test-utils": "^15.0.2",
-    "react-element-to-jsx-string": "^2.6.1",
     "rimraf": "^2.5.2",
     "tap": "^5.7.1",
     "tap-spec": "^4.1.1",

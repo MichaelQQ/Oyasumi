@@ -24,8 +24,8 @@ const testThumbnailList = t => {
   deepFreeze(expect);
   deepFreeze(actual);
 
-  t.plan(1);
   t.deepEqual(actual, expect, '<ThumbnailList /> must equal the expect dom');
+  t.end();
 };
 
 test('Test ThumbnailList Container', testThumbnailList);

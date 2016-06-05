@@ -22,7 +22,6 @@ const thumbnails = (state = {}, action) => {
       };
     case IMAGE_FETCH_SUCCEEDED:
       return {
-        ...state,
         ...action.imgsObject,
       };
     default:

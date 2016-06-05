@@ -9,7 +9,7 @@
     "build": "echo \"=> Building\" && npm run test && npm run bundle",
     "pretest": "echo \"=> Linting\" && eslint ./src/**/*.js",
     "test": "echo \"=> Testing\" && babel-tape-runner src/**/test/*.js | tap-spec",
-    "watch": "watch 'clear && npm run test -s' src test",
+    "watch": "watch 'clear && npm run test -s' src",
     "dev": "babel-node devServer.js",
     "update": "updtr"
   },

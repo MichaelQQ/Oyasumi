@@ -1,7 +1,7 @@
 import React from 'react';
-
 import ThumbnailList from './containers/thumbnaillist';
 import SearchformContainer from './containers/searchformContainer';
+import LoadingContainer from './containers/loadingContainer';
 
 export const App = () =>
   <div>
@@ -9,7 +9,7 @@ export const App = () =>
       <span className="title">Oyasumi</span>
       <SearchformContainer />
     </h1>
-
+    <LoadingContainer />
     <ThumbnailList />
   </div>;
 

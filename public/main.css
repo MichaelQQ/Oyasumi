@@ -9,7 +9,20 @@ a {
 }
 .title {
   font-family: 'Pacifico', cursive;
-  margin: 10px 1rem 10px -3rem;
+  width: 120px;
+  /*margin: 10px 1rem 10px -3rem;*/
+}
+.loading {
+  position: absolute;
+  text-align: center;
+  z-index: 2;
+  width: 100vw;
+  height: 100vh;
+  margin: auto;
+}
+.loading > img {
+  width: 150px;
+  margin-left: -75px;
 }
 .input-search {
   font-size: 1rem;
@@ -80,5 +93,4 @@ a {
 }
 footer {
   text-align: center;
-  margin: 10px;
 }

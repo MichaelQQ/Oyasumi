@@ -10,9 +10,9 @@ module.exports = {
     './src/main',
   ],
   output: {
-    path: path.join(__dirname, 'build/js'),
+    path: path.join(__dirname, 'build'),
     filename: 'main.js',
-    publicPath: '/',
+    publicPath: '/build/',
   },
   module: {
     loaders: [

@@ -1,5 +1,7 @@
 # Gallery
 
+[![Build Status](https://travis-ci.org/MichaelQQ/Oyasumi.svg?branch=master)](https://travis-ci.org/MichaelQQ/Oyasumi)
+
 A ReactJS sample Application.
 
 Created by React stateless functional components.

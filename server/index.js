@@ -20,6 +20,5 @@ app.use('/api', instagramRouter);
 app.get('/*', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 
 app.listen(port, () => {
-  console.log(__dirname);
   console.log(`Listen at port: ${port}`);
 });

@@ -8,7 +8,7 @@
     "start": "echo \"=> Starting && babel-node server/index.js",
     "bundle": "echo \"=> Bundling\" && webpack --config webpack.prod.config.js",
     "prebuild": "echo \"=> Cleaning\" && rimraf build/*",
-    "build": "echo \"=> Building\" && npm run test && npm run bundle",
+    "build": "echo \"=> Building\" && npm run bundle",
     "pretest": "echo \"=> Linting\" && eslint ./src/**/*.js",
     "test": "echo \"=> Testing\" && babel-tape-runner src/**/*.test.js | tap-spec",
     "watch": "watch 'clear && npm run test -s' src",

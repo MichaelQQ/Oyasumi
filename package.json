@@ -1,9 +1,11 @@
 {
-  "name": "gallery",
+  "name": "Oysuami",
   "version": "1.0.0",
-  "description": "my project gallery",
+  "description": "Oyasumi gallery project",
   "main": "index.js",
   "scripts": {
+    "prestart": "npm run build",
+    "start": "echo \"=> Starting && babel-node server/index.js",
     "bundle": "echo \"=> Bundling\" && webpack --config webpack.prod.config.js",
     "prebuild": "echo \"=> Cleaning\" && rimraf build/*",
     "build": "echo \"=> Building\" && npm run test && npm run bundle",
@@ -15,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MichaelQQ/Gallery.git"
+    "url": "git+https://github.com/MichaelQQ/Oyasumi.git"
   },
   "author": "MichaelQQ",
   "license": "ISC",

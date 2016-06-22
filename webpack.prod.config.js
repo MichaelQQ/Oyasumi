@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  devtool: 'source-map',
+  // devtool: 'source-map',
   resolve: {
     root: __dirname + '/src'
   },
@@ -12,7 +12,6 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'build'),
     filename: 'main.js',
-    // publicPath: '/static/'
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),

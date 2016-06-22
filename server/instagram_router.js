@@ -34,8 +34,6 @@ router.get('/instagram', (req, res) => {
     co(function *() {
       const accessToken = yield getAccessToken(code);
       const response = yield fetch(`https://api.instagram.com/v1/tags/sexy/media/recent?access_token=${accessToken}`);
-      // const response = yield fetch(`https://api.instagram.com/v1/tags/search?q=snowy&access_token=${accessToken}`);
-      // const response = yield fetch(`https://api.instagram.com/v1/users/self/media/recent/?access_token=${accessToken}`);
       const data = yield response.json();
       console.log(data);
     });

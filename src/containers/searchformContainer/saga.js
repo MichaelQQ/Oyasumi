@@ -6,7 +6,7 @@ import {
   IMAGE_FETCH_FAILED } from './action';
 import { getSearchValue } from './selector';
 
-const apiServer = 'http://localhost:7788/api/flickr';
+const apiServer = '//oyasumi.herokuapp.com/api/flickr';
 const generateImgSrc = (farm, server, id, secret) =>
   `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`;
 

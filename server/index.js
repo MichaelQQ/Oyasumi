@@ -1,8 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import helmet from 'helmet';
-import webpack from 'webpack';
-import config from '../webpack.dev.config';
+// import webpack from 'webpack';
+// import config from '../webpack.dev.config';
 import path from 'path';
 
 import instagramRouter from './instagram_router';
@@ -15,12 +15,13 @@ const app = express();
 app.use(helmet());
 app.use(bodyParser.json());
 
-const compiler = webpack(config);
+// const compiler = webpack(config);
 app.use(express.static('public'));
-app.use(require('webpack-dev-middleware')(compiler, {
-  noInfo: true,
-  publicPath: config.output.publicPath,
-}));
+app.use(express.static('build'));
+// app.use(require('webpack-dev-middleware')(compiler, {
+//   noInfo: true,
+//   publicPath: config.output.publicPath,
+// }));
 
 app.use('/api', flickrRouter);
 app.use('/api', instagramRouter);

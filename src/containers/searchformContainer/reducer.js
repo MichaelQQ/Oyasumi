@@ -16,14 +16,21 @@ const searchInfo = (state = {
     case IMAGE_FETCH_REQUESTED:
       return {
         ...state,
+        lastSearchValue: state.searchValue,
         isFetching: true,
       };
     case IMAGE_FETCH_SUCCEEDED:
       return {
         ...state,
+        lastPage: action.page,
+        maxPage: action.maxPage,
         isFetching: false,
       };
     case IMAGE_FETCH_FAILED:
+      return {
+        ...state,
+        isFetching: false,
+      };
     default:
       return state;
   }

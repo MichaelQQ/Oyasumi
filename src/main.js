@@ -11,46 +11,35 @@ import App from './App.js';
 
 import { imgSaga } from './containers/searchformContainer/saga';
 
-const pages = (state = {}, action) => {
-  switch (action.type) {
-    case 'SET_PAGE':
-      return {
-        ...state,
-        maxPage: action.maxPage,
-      };
-    default:
-      return state;
-  }
-};
-
 const mainReducer = combineReducers({
   thumbnails,
   thumbnailId,
   searchInfo,
-  pages,
 });
 
-/**
- * Logs all actions and states after they are dispatched.
- */
-const logger = store => next => action => {
-  console.group(action.type);
-  console.info('dispatching', action);
-  const result = next(action);
-  console.log('next state', store.getState());
-  console.groupEnd(action.type);
-  return result;
-};
-
 const sagaMiddleware = createSagaMiddleware();
+let middleware = [sagaMiddleware];
+if (process.env.NODE_ENV !== 'production') {
+  /**
+   * Logs all actions and states after they are dispatched.
+   */
+  const logger = store => next => action => {
+    console.group(action.type);
+    console.info('dispatching', action);
+    const result = next(action);
+    console.log('next state', store.getState());
+    console.groupEnd(action.type);
+    return result;
+  };
+  middleware = [...middleware, logger];
+}
+const createStoreWithMiddleware = applyMiddleware(...middleware)(createStore);
+
 const initSearchInfo = { searchValue: '' };
-const store = createStore(
+const store = createStoreWithMiddleware(
   mainReducer,
   { searchInfo: initSearchInfo },
-  compose(
-    applyMiddleware(logger, sagaMiddleware),
-    window.devToolsExtension ? window.devToolsExtension() : undefined
-  )
+  compose(window.devToolsExtension ? window.devToolsExtension() : f => f)
 );
 sagaMiddleware.run(imgSaga);
 

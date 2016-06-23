@@ -7,6 +7,7 @@ module.exports = {
     root: __dirname + '/src'
   },
   entry: [
+    'babel-polyfill',
     './src/main'
   ],
   output: {

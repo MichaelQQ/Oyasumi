@@ -26,7 +26,7 @@ const testSearchform = t => {
         onKeyDown={onKeyDown}
         onChange={onChange}
       ></input>
-      <button className="button" onClick={onSearch}>Search</button>
+      <a href="#" type="button" className="button" onClick={onSearch}>Search</a>
     </div>
   );
 

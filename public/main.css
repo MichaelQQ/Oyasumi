@@ -44,11 +44,14 @@ a {
   background-color: aquamarine;
 }
 .button {
-  border-radius: 10px;
   background-color: aquamarine;
   border-color: aquamarine;
   font-size: 1.3rem;
-  margin: 0 3px;
+  margin: 0 5px;
+  text-decoration: none;
+  color: black;
+  border-radius: 5px;
+  padding: 4px;
 }
 .thumbnailList {
   display: flex;

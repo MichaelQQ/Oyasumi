@@ -1,8 +1,8 @@
-import FormData from 'form-data';
-import 'isomorphic-fetch';
-import co from 'co';
-import express from 'express';
-import path from 'path';
+const FormData = require('form-data');
+require('isomorphic-fetch');
+const co = require('co');
+const express = require('express');
+const path = require('path');
 
 const router = express.Router();
 const INSTAGRAM_CLIENT_ID = process.env.INSTAGRAM_ID;

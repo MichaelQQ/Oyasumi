@@ -1,10 +1,10 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import helmet from 'helmet';
-import path from 'path';
+const express = require('express');
+const bodyParser = require('body-parser');
+const helmet = require('helmet');
+const path = require('path');
 
-import instagramRouter from './instagram_router';
-import flickrRouter from './flickr_router';
+const instagramRouter = require('./instagram_router');
+const flickrRouter = require('./flickr_router');
 
 const port = process.env.PORT || 7788;
 const app = express();

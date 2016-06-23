@@ -1,6 +1,6 @@
-require('isomorphic-fetch');
-const co = require('co');
-const express = require('express');
+import 'isomorphic-fetch';
+import co from 'co';
+import express from 'express';
 
 const router = express.Router();
 const FLICKR_ID = process.env.FLICKR_ID;

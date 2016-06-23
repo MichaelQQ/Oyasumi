@@ -29,14 +29,18 @@ a {
   height: 1.7rem;
   border-radius: 5px;
 }
-.page-nav {
+.nav {
+  font-size: 1.2rem;
+  margin: 5px;
+  position: absolute;
+  right: 0px;
+}
+.nav-btn {
   display: inline-block;
   border: 1px solid black;
-  padding: 0 3px 0 3px;
+  padding: 0 5px;
   border-radius: 5px;
   margin: 0 10px 0 10px;
-  widows: 20px;
-  height: 20px;
   background-color: aquamarine;
 }
 .button {

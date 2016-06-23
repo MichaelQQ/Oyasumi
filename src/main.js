@@ -49,7 +49,7 @@ const store = createStore(
   { searchInfo: initSearchInfo },
   compose(
     applyMiddleware(logger, sagaMiddleware),
-    window.devToolsExtension ? window.devToolsExtension() : undefined
+    window.devToolsExtension ? window.devToolsExtension() : x => x
   )
 );
 sagaMiddleware.run(imgSaga);

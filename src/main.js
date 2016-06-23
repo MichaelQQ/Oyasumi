@@ -30,27 +30,29 @@ const mainReducer = combineReducers({
   pages,
 });
 
-/**
- * Logs all actions and states after they are dispatched.
- */
-const logger = store => next => action => {
-  console.group(action.type);
-  console.info('dispatching', action);
-  const result = next(action);
-  console.log('next state', store.getState());
-  console.groupEnd(action.type);
-  return result;
-};
-
 const sagaMiddleware = createSagaMiddleware();
+let middleware = [sagaMiddleware];
+if (process.env.NODE_ENV !== 'production') {
+  /**
+   * Logs all actions and states after they are dispatched.
+   */
+  const logger = store => next => action => {
+    console.group(action.type);
+    console.info('dispatching', action);
+    const result = next(action);
+    console.log('next state', store.getState());
+    console.groupEnd(action.type);
+    return result;
+  };
+  middleware = [...middleware, logger];
+}
+const createStoreWithMiddleware = applyMiddleware(...middleware)(createStore);
+
 const initSearchInfo = { searchValue: '' };
-const store = createStore(
+const store = createStoreWithMiddleware(
   mainReducer,
   { searchInfo: initSearchInfo },
-  compose(
-    applyMiddleware(logger, sagaMiddleware),
-    window.devToolsExtension ? window.devToolsExtension() : x => x
-  )
+  compose(window.devToolsExtension ? window.devToolsExtension() : f => f)
 );
 sagaMiddleware.run(imgSaga);
 

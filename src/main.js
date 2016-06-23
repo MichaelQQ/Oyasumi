@@ -11,23 +11,10 @@ import App from './App.js';
 
 import { imgSaga } from './containers/searchformContainer/saga';
 
-const pages = (state = {}, action) => {
-  switch (action.type) {
-    case 'SET_PAGE':
-      return {
-        ...state,
-        maxPage: action.maxPage,
-      };
-    default:
-      return state;
-  }
-};
-
 const mainReducer = combineReducers({
   thumbnails,
   thumbnailId,
   searchInfo,
-  pages,
 });
 
 const sagaMiddleware = createSagaMiddleware();

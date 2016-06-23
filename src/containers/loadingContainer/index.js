@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 export const LoadingContainer = ({ ...props }) => {
-  const { isFetching = false } = props;
+  const { isFetching } = props;
 
   const loading = isFetching
     ? (<div className="loading"><img src="images/loading.gif" alt="loading" /></div>)
-    : undefined;
+    : (<div></div>);
 
   return loading;
 };
@@ -18,7 +18,7 @@ LoadingContainer.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  isFetching: state.searchInfo.isFetching,
+  isFetching: state.searchInfo.isFetching || false,
 });
 
 export default connect(mapStateToProps)(LoadingContainer);

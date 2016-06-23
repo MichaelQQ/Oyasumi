@@ -22,9 +22,11 @@ const testTextchange = (t) => {
 };
 
 const testImgFetchRequested = (t) => {
-  const state = {};
+  const state = { searchValue: 'a' };
   const actual = reducer(state, { type: IMAGE_FETCH_REQUESTED });
   const expect = {
+    searchValue: 'a',
+    lastSearchValue: 'a',
     isFetching: true,
   };
 
@@ -36,9 +38,11 @@ const testImgFetchRequested = (t) => {
 
 const testImgFetchSucceeded = (t) => {
   const state = {};
-  const actual = reducer(state, { type: IMAGE_FETCH_SUCCEEDED });
+  const actual = reducer(state, { type: IMAGE_FETCH_SUCCEEDED, page: 1, maxPage: 10 });
   const expect = {
     isFetching: false,
+    lastPage: 1,
+    maxPage: 10,
   };
 
   deepFreeze(actual);

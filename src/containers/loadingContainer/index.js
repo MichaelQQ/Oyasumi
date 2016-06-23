@@ -4,12 +4,11 @@ import { connect } from 'react-redux';
 export const LoadingContainer = ({ ...props }) => {
   const { isFetching = false } = props;
 
-  const loading = isFetching ?
-    <img src="images/loading.gif" alt="loading" /> : undefined;
+  const loading = isFetching
+    ? (<div className="loading"><img src="images/loading.gif" alt="loading" /></div>)
+    : undefined;
 
-  return (
-    <div className="loading">{loading}</div>
-  );
+  return loading;
 };
 
 const { bool } = React.PropTypes;

@@ -9,7 +9,7 @@
     "prebuild": "echo \"=> Cleaning\" && rimraf build/*",
     "build": "echo \"=> Building\" && npm run bundle",
     "pretest": "echo \"=> Linting\" && eslint ./src/**/*.js",
-    "test": "echo \"=> Testing\" && babel-tape-runner src/**/*.test.js --coverage | tap-spec",
+    "test": "echo \"=> Testing\" && nyc babel-tape-runner src/**/*.test.js | tap-spec",
     "posttest": "tap --coverage-report=lcov | codecov",
     "watch": "watch 'clear && npm run test -s' src",
     "dev": "babel-node devServer.js",

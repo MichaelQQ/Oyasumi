@@ -10,7 +10,7 @@
     "build": "echo \"=> Building\" && npm run bundle",
     "pretest": "echo \"=> Linting\" && eslint ./src/**/*.js",
     "test": "echo \"=> Testing\" && nyc babel-tape-runner src/**/*.test.js | tap-spec",
-    "posttest": "tap --coverage-report=lcov | codecov",
+    "posttest": "nyc report --reporter=lcov | codecov",
     "watch": "watch 'clear && npm run test -s' src",
     "dev": "babel-node devServer.js",
     "update": "updtr"

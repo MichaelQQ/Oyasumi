@@ -36,7 +36,8 @@ const testTextchange = (t) => {
     { target: {
       value: 'a',
     },
-  });
+    }
+  );
   const expect = {
     type: TEXT_CHANGE,
     searchValue: 'a',

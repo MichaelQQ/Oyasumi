@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 
 const Thumbnail = ({ ...props }) => {
   const { thumbnail } = props;
@@ -17,7 +19,7 @@ const Thumbnail = ({ ...props }) => {
 
 const {
   object,
-} = React.PropTypes;
+} = PropTypes;
 
 Thumbnail.propTypes = {
   thumbnail: object.isRequired,

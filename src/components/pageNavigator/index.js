@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 
 const pageNavigator = ({ ...props }) => {
   const { page, maxPage, onPrev, onNext } = props;
@@ -21,7 +23,7 @@ const pageNavigator = ({ ...props }) => {
 const {
   number,
   func,
-} = React.PropTypes;
+} = PropTypes;
 
 pageNavigator.propTypes = {
   page: number.isRequired,

@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 
 const Searchfrom = ({ ...props }) => {
   const { searchValue, onKeyDown, onChange, onSearch } = props;
@@ -21,7 +23,7 @@ const Searchfrom = ({ ...props }) => {
 const {
   string,
   func,
-} = React.PropTypes;
+} = PropTypes;
 
 Searchfrom.propTypes = {
   searchValue: string.isRequired,

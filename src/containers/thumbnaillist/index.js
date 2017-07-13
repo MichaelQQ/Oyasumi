@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import ThumbnailContainer from '../thumbnailContainer';
 
@@ -19,7 +20,7 @@ export const ThumbnailList = ({ ...props }) => {
 
 const {
   array,
-} = React.PropTypes;
+} = PropTypes;
 
 ThumbnailList.propTypes = {
   thumbnailId: array,

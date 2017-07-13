@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import PageNavigator from '../../components/pageNavigator';
 import { prev, next } from './action';
@@ -8,14 +9,14 @@ export const PageNavigatorContainer = ({ ...props }) => {
   const { page, maxPage, onPrev, onNext } = props;
 
   return page
-  ? (
-    <PageNavigator
-      page={page}
-      maxPage={maxPage}
-      onPrev={onPrev}
-      onNext={onNext}
-    />)
-  : (<div></div>);
+    ? (
+      <PageNavigator
+        page={page}
+        maxPage={maxPage}
+        onPrev={onPrev}
+        onNext={onNext}
+      />)
+    : (<div></div>);
 };
 
 const mapStateToProps = (state) => ({
@@ -31,7 +32,7 @@ const mapDispatchToProps = (dispatch) => ({
 const {
   func,
   number,
-} = React.PropTypes;
+} = PropTypes;
 
 PageNavigatorContainer.propTypes = {
   page: number,

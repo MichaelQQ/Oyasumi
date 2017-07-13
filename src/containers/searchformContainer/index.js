@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Searchform from '../../components/searchform';
 import { keydown, change, search } from './action';
@@ -32,7 +33,7 @@ const mapDispatchToProps = (dispatch) => ({
 const {
   string,
   func,
-} = React.PropTypes;
+} = PropTypes;
 
 SearchformContainer.propTypes = {
   searchValue: string.isRequired,

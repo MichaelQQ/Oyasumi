@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 
 export const LoadingContainer = ({ ...props }) => {
   const { isFetching } = props;
@@ -11,7 +13,7 @@ export const LoadingContainer = ({ ...props }) => {
   return loading;
 };
 
-const { bool } = React.PropTypes;
+const { bool } = PropTypes;
 
 LoadingContainer.propTypes = {
   isFetching: bool.isRequired,

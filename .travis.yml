@@ -1,18 +1,20 @@
 language: node_js
 node_js:
-  - '6'
+- '8'
+after_success:
+- bash <(curl -s https://codecov.io/bash)
 cache:
   directories:
-    - node_modules
-before_deploy: "npm run build"
+  - node_modules
+before_deploy: npm run build
 deploy:
   skip_cleanup: true
   provider: heroku
   api_key:
-    secure: bSHt8VfVXbcE+V7H7FEEXHttFDtkj4VCsH8l+J/i1LZVD6whhv5pecUTv2wDRkAw3E6bJnxVPEPRo+z709OPR/DNNZTCX8e+f9Wl6Di+99h3jxqQfHnvM2EIN4Cj5ARALVLIEEcV4Qv18jEYfyn8ibRF5TOTONvsGaQSxXSIeL43Zd7ZlCViOvqGv1Dnm7x0MmKc1uEyuXj/V38aPCFMbJJAv3aDXqK3DTCDgKZuKCh8K1M/nWRq0RYb2B8Ll47dI8Z4n3rWkhCy1XoljlC5+VbhL7UYt6zjnzjJD21JEmywB/dC5y3+cdv0K5bFVd84TWRVA1dxD72gcemJ4zbcdBO1ej0AA/YjU7EetpWToTwrI885mGILjV0vgQvd2Fawxie7j8DCc1aKpu7L0PpjrCxsqLS1Ipi76KQbN5mj2vsMhakhi/I+BKUyFbCQqhkCrdVX7WTtxTc6s8O8nJ0AQ23d55Y/VGWJE4rtUzd+gBz6JD4vskXRMtu7WKeJwp7Akn6t0kFnQfSl12TT1F75hH1sX/Pep6izUKcnsynnjzWANYhTOZyLUAP/CRxizNq4O5QyTonKWKDfsIg4RIImjLiQ74+mqz24sDk82DhWdTRVerSMQBdJj9IlqlLEpH1/f+KkpZjyk76TziVVKZMlgAYXYspKfhzia215EU/PxUw=
+    secure: d8mPPaNtukes9i20tThZqUG9TV8VoIpZx76g6F6WxHav5V0ppZbCGVnVX54QNHEbeATIVWLFmM3CfkcIG3uRMNLEvz9yDg8RU4f+B3drgGBKIt1SUzQlmRVA8hqFx9ciwmnJhtojG/wYn24+OlHMwaFoJ3ci1L3w0zi5IVqwS5Phg9EOP4Y6+ATyMoEHrxDHqH9PN4h+5tFQ0LzqnvkdtxDyWgnr4gJT0x3vCKPxJrYtW9/KTnH2RDpEAZAIcR1Pq92qajJnrfozFujqPaZTMrOMs0Xi4+sQOY1l3WZdG19tNVKlx4Px8zCSWaI/AVarF8Rhvhq+0iIxdl0tWYwfIxVaG5SK343yn+GqnLt35LLbXv1y50RteQ56+MYLm6QbmU8lqECZR5wP7rFsuNLJiIINLqonzpF8OrDA+NkfQ0XQTecIc6V5SpsCCnJCKP//QOkYNjuRskTH8abDIgMDGOXVLSXaR60HANyXW9sfxgbBptdlBe6eZm0rlUE4FQ0NcR60VFJsorWAGrDu8n8rDO+nnVR0aZF5kE5Tkczv3oz/SJ0bmb4HGe0zvEQj2p3admKeg297i+S8G27hZGbDUmdmKyAMrY6IX/ARvyjkv8ig7QLpl4XicL3WzeY0KZf91HzoRNStFpNhifb8CO3ji7P8Wk3om+Bi2vTE/3/Bt9A=
   app: oyasumi
   on:
     branch:
-      - master
-      - dev
+    - master
+    - dev
     repo: MichaelQQ/Oyasumi

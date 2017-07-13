@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Thumbnail from '../../components/thumbnail';
 
@@ -19,7 +20,7 @@ export const ThumbnailContainer = ({ ...props }) => {
 
 const {
   object,
-} = React.PropTypes;
+} = PropTypes;
 
 ThumbnailContainer.propTypes = {
   thumbnail: object.isRequired,

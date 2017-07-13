@@ -27,12 +27,12 @@ const getImgsObject = imgs =>
 
 const getTargetPage = (pageNav, last, max) => {
   switch (pageNav) {
-    case 'next':
-      return last === max ? last : last + 1;
-    case 'prev':
-      return last === 1 ? last : last - 1;
-    default:
-      return 1;
+  case 'next':
+    return last === max ? last : last + 1;
+  case 'prev':
+    return last === 1 ? last : last - 1;
+  default:
+    return 1;
   }
 };
 

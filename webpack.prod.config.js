@@ -3,9 +3,9 @@ const webpack = require('webpack');
 
 module.exports = {
   // devtool: 'source-map',
-  resolve: {
-    root: __dirname + '/src'
-  },
+  // resolve: {
+  //   root: __dirname + '/src'
+  // },
   entry: [
     'babel-polyfill',
     './src/main'
@@ -15,7 +15,6 @@ module.exports = {
     filename: 'main.js',
   },
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
